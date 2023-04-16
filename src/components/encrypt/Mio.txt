@@ -1,0 +1,60 @@
+
+    const frecuenciaLetras = {};
+    for (let i = 0; i < texto.length; i++) {
+      const letra = texto[i].toLowerCase();
+      if (frecuenciaLetras[letra]) {
+        frecuenciaLetras[letra]++;
+      } else {
+        frecuenciaLetras[letra] = 1;
+      }
+    }
+
+const limpiarTexto = (texto) => {
+      texto = texto.toUpperCase();
+      texto = diacritics.remove(texto);
+      texto = texto.replace(/[^a-zA-ZñÑ\s]/g, '');
+      
+      return texto;
+    };
+
+
+    const cifrarTexto = () => {
+      let encriptado = '';
+      const mensajeLimpio = limpiarTexto(mensaje);
+      for (let i = 0; i < mensajeLimpio.length; i++) {
+        const letraOriginal = mensajeLimpio[i].toUpperCase();
+        const posicionOriginal = alfabeto.indexOf(letraOriginal);
+        if (posicionOriginal === -1) {
+            encriptado += letraOriginal;
+            continue;
+        }
+        const posicionCifrada = (claveA * posicionOriginal + claveB) % mod;
+        const letraCifrada = alfabeto[posicionCifrada];
+        encriptado += letraCifrada;     
+      }
+      setCifrado(encriptado);
+    };
+    
+    const encontrarModuloInverso = (a, m) => {
+      for (let i = 1; i < m; i++) {
+        if (((a % m) * (i % m)) % m == 1) {
+          return i;
+        }     
+      }
+      return 1;
+    }
+
+        const decifrarTexto = () => {
+        let desencriptado = '';
+        const aInverso = encontrarModuloInverso(claveA, alfabeto.length);
+        for (let i = 0; i < cifrado.length; i++) {
+          const charIndex = alfabeto.indexOf(cifrado[i].toUpperCase());
+          if (charIndex === -1) {
+              desencriptado -= cifrado[i];
+          } else {
+              const desencriptadoCharIndex = aInverso * (charIndex - claveB + alfabeto.length) % alfabeto.length;
+              desencriptado += alfabeto[desencriptadoCharIndex];
+          }
+        }
+        setDecifrado(desencriptado);
+      };
