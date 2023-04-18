@@ -1,45 +1,41 @@
 #encrypt {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 20px;
-  }
-  
-  section {
-    flex-basis: 45%;
-  }
-  
-  h2 {
-    margin-bottom: 10px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  label {
-    font-weight: bold;
-  }
-  
-  textarea {
-    width: 80%;
-    height: 200px;
-    padding: 10px;
-    border: 2px solid #ccc;
-    font-size: 16px;
-  }
-  
-  textarea[readonly] {
-    background-color: #f9f9f9;
-    color: #555;
-  }
-
-  input[type="number"]::-webkit-outer-spin-button,
-  input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* opcional, para centrar los elementos horizontalmente */
 }
-  
+
+section {
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+form > div {
+  margin-bottom: 10px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+form input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+form textarea{ 
+  width: 600px;
+  height: 200px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
