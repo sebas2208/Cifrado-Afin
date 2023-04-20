@@ -18,7 +18,6 @@ const Encrypt = () => {
     const alfabeto = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split("");
     const mod = alfabeto.length;
 
-
     const limpiarTexto = (texto) => {
       texto = texto.toUpperCase();
       texto = diacritics.remove(texto);
@@ -73,22 +72,22 @@ const Encrypt = () => {
       let dicccionarioPalabras = {};
       let mensajeLimpio = limpiarTexto(mensajeDescifrar);
       dicccionarioPalabras = crearDiccionario(mensajeLimpio);
+
       let mayor1 = 0;
-      let mayor2 = 0;
       for (let a in dicccionarioPalabras ) {
         if (mayor1 < dicccionarioPalabras[a]) {
           mayor1 = dicccionarioPalabras[a];
           setLetraMayor1(a);
         }
       }
+      
+      let mayor2 = 0;
       for (let a in dicccionarioPalabras ) {
         if (mayor2 < dicccionarioPalabras[a] && a !== letraMayor1) {
           mayor2 = dicccionarioPalabras[a];
           setLetraMayor2(a);
         }
       }
-
-      console.log(claveADescifrado, claveBDescifrado);
 
       let valorB = getPosicionOriginal(letraMayor2) ;
 
@@ -102,7 +101,7 @@ const Encrypt = () => {
 
       setClaveADescifrado(valorA);
 
-      console.log(claveACifrado, claveBCifrado);
+
 
       const aInverso = encontrarModuloInverso(claveADescifrado, alfabeto.length);
       for (let i = 0; i < mensajeLimpio.length; i++) {
@@ -155,8 +154,8 @@ const Encrypt = () => {
             <div>
               <p>El valor de A es: {claveADescifrado}</p>
               <p>El valor de B es: {claveBDescifrado}</p>
-              <p>La primera letra más frecuente es: {letraMayor1}</p>
-              <p>La segunda letra más frecuente es: {letraMayor2}</p>
+              <p>La primera letra más repetida es: {letraMayor1}</p>
+              <p>La segunda letra más repetida es: {letraMayor2}</p>
             </div>
             <div>
               <label htmlFor="mensaje-decifrado">Mensaje decifrado</label>
