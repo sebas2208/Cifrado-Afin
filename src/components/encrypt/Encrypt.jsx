@@ -74,9 +74,11 @@ const Encrypt = () => {
       dicccionarioPalabras = crearDiccionario(mensajeLimpio);
 
       let mayor1 = 0;
+      let aux1 = 0;
       for (let a in dicccionarioPalabras ) {
         if (mayor1 < dicccionarioPalabras[a]) {
           mayor1 = dicccionarioPalabras[a];
+          aux1 = a;
           setLetraMayor1(a);
         }
       }
@@ -153,6 +155,7 @@ const Encrypt = () => {
             <button className="btn btn-primary" type="button" onClick={decifrarTexto}>Descifrar</button>
             <div>
               <p>El valor de A es: {claveADescifrado}</p>
+              <input type="text" value={claveADescifrado} readOnly={true} />
               <p>El valor de B es: {claveBDescifrado}</p>
               <p>La primera letra más repetida es: {letraMayor1}</p>
               <p>La segunda letra más repetida es: {letraMayor2}</p>
